@@ -11,14 +11,14 @@
   "breeding_type": [1, 2],
   "note": "",
   "quantity": 5,
-  "image_url": "https://img.notionusercontent.com/s3/prod-files-secure%2F7ce1cf89-66b0-4343-94e6-80b60e9cfe4a%2F3089e6cf-e31c-458d-bae1-5e20dfe83a93%2Fimage.png/size/w=1390?exp=1731914724&sig=HtE5S-lgYMtSG1Rt56oSomLduZXISFJnzM8kXNC0rNc"
+  "image_url": "https://adayimg.com/wp-content/uploads/2020/12/615edd5dccc1fae2545d176c1110e3a7.jpg"
 },
 {
-  "name": "Môn Quan Âm",
-  "price": 180000,
-  "feature": "Cây Môn Quan Âm có lá xanh đậm, bóng, hình bầu dục nhọn hai đầu. Hoa màu trắng, hình mo, mọc trên cuống dài vươn lên khỏi tán lá. Cây có khả năng thanh lọc không khí tốt. Thích hợp trồng trong nhà hoặc nơi có bóng râm.",
+  "name": "Cây Bình An",
+  "price": 160000,
+  "feature": "Cây thân thảo nhỏ, cây có hình dáng nhỏ nhắn mọc thành từng bụi. Lá cây có hình bầu dục trên mặt lá có các đường viền màu trắng chạy dọc xuống, mỗi lá có khoảng 3-4 đường viền rất lạ mắt. Thường được trồng trong lọ hoặc treo lên góc nhà hay hành lang",
   "category": 1,
-  "light_type": [1, 2, 3],
+  "light_type": [1, 2],
   "water_type": [1, 2],
   "earth_type": [1, 2],
   "humidity_type": [2],
@@ -26,5 +26,5 @@
   "breeding_type": [1, 2],
   "note": "",
   "quantity": 5,
-  "image_url": "https://img.notionusercontent.com/s3/prod-files-secure%2F7ce1cf89-66b0-4343-94e6-80b60e9cfe4a%2F3089e6cf-e31c-458d-bae1-5e20dfe83a93%2Fimage.png/size/w=1390?exp=1731914724&sig=HtE5S-lgYMtSG1Rt56oSomLduZXISFJnzM8kXNC0rNc"
+  "image_url": "https://caydeban.com.vn/image/cache/catalog/products/cay-de-ban/binh-an_0956-800x800.JPG"
 }]

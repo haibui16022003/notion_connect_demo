@@ -1,39 +1,46 @@
+# import notion_client
+#
+# notion_client = notion_client.Client(auth="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")
+#
+# def fetch_database_schema(database_id):
+#     try:
+#         database = notion_client.databases.retrieve(database_id=database_id)
+#         print("Properties in the database:")
+#         for prop, details in database["properties"].items():
+#             print(f"{prop} - {details['type']}")
+#     except Exception as e:
+#         print(f"Error fetching schema: {e}")
+#
+# database_id = "141c01c87bec80ec9415cf5379f34ab2"
+# fetch_database_schema(database_id)
+
 import requests
-from util.config import Config
 
-def get_database(database_id, notion_token):
-    url = f"https://api.notion.com/v1/databases/{database_id}"
-    headers = {
-        "Authorization": f"Bearer {notion_token}",
-        "Content-Type": "application/json",
-        "Notion-Version": "2022-06-28"  # Ensure you're specifying the correct API version.
-    }
+header = {
+    "Authorization": "Bearer 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",
+    "Notion-Version": "2022-06-28"
+}
 
-    try:
-        response = requests.get(url, headers=headers)
-        if response.status_code == 200:
-            return {"status": "success", "data": response.json()}
-        else:
-            return {
-                "status": "error",
-                "code": response.status_code,
-                "message": response.text
-            }
-    except requests.exceptions.RequestException as e:
-        return {"status": "error", "message": str(e)}
+url = f"https://api.notion.com/v1/databases/141c01c87bec80ec9415cf5379f34ab2/query"
+has_more = True
+next_cursor = None
+page_ids = []
 
-# Retrieve configuration
-conf = Config(config_file="config.ini")
-get_config = conf.get_section_conf("notion")
-database_id = get_config.get("notion_id")
-notion_token = get_config.get("api_key")
+while has_more:
+    payload = {"start_cursor": next_cursor} if next_cursor else {}
+    response = requests.post(url, headers=header, data=payload)
 
-# Test the connection
-database_info = get_database(database_id, notion_token)
+    response.raise_for_status()
+    data = response.json()
+    page_ids.extend([page["id"] for page in data.get("results", [])])
+    has_more = data.get("has_more", False)
+    next_cursor = data.get("next_cursor", None)
 
-if database_info["status"] == "success":
-    print("Connection successful!")
-    print(database_info["data"])
-else:
-    print(f"Connection failed: {database_info['code']}")
-    print(database_info["message"])
+print(page_ids)
+
+for page_id in page_ids:
+        try:
+            delete_url = f"https://api.notion.com/v1/pages/{page_id}"
+            requests.patch(delete_url, headers=header, json={"archived": True})
+        except Exception as e:
+            print(e)
